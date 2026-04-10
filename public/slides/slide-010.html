@@ -1,0 +1,28 @@
+<article class="slide" data-number="10" data-type="code-example" data-section="Microsoft Foundry &amp; Hosted Agents">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">Dockerfile — Packaging Your Agent</h1>
+    <div class="code-block"><span class="kw">FROM</span> python:3.12-slim
+
+<span class="kw">WORKDIR</span> /app
+
+<span class="kw">COPY</span> requirements.txt .
+<span class="kw">RUN</span> pip install --upgrade pip &amp;&amp; \
+    pip install --no-cache-dir -r requirements.txt
+
+<span class="kw">COPY</span> . /app/LogisticsAgent/
+
+<span class="cmt"># Bake the SQLite database at build time</span>
+<span class="kw">RUN</span> python -c <span class="str">"import sys; sys.path.insert(0, '/app'); \
+    from LogisticsAgent.data.init_db import init_database; \
+    init_database()"</span>
+
+<span class="kw">EXPOSE</span> <span class="num">8088</span>
+
+<span class="kw">ENV</span> PYTHONPATH=/app
+
+<span class="kw">CMD</span> [<span class="str">"python"</span>, <span class="str">"-m"</span>, <span class="str">"LogisticsAgent.main"</span>]</div>
+    <p class="slide-body" style="font-size:28px; margin-top:4px;">⚠️ Always build with <code>--platform linux/amd64</code> (remote builds handle this automatically)</p>
+  </div>
+  <aside class="speaker-notes" hidden>The Dockerfile is straightforward. Python 3.12-slim base, install dependencies, copy code, expose port 8088, and set the entrypoint. Two things worth noting: First, we run pip install --upgrade pip because the base image ships with an older pip that can fail on certain package extras. Second, we bake the SQLite database into the image at build time. The critical architecture requirement is Linux AMD64. Since we use remoteBuild: true, ACR handles this correctly.</aside>
+</article>

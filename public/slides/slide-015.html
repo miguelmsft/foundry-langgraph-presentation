@@ -1,0 +1,35 @@
+<article class="slide" data-number="15" data-type="code-example" data-section="Building Agents with LangGraph">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">Building a LangGraph Agent</h1>
+    <div class="code-label">graph.py (simplified from our demo)</div>
+    <div class="code-block"><span class="kw">from</span> langchain_openai <span class="kw">import</span> AzureChatOpenAI
+<span class="kw">from</span> azure.identity <span class="kw">import</span> DefaultAzureCredential, get_bearer_token_provider
+<span class="kw">from</span> langgraph.prebuilt <span class="kw">import</span> create_react_agent
+
+<span class="kw">def</span> <span class="fn">_create_model</span>() -> AzureChatOpenAI:
+    token_provider = <span class="fn">get_bearer_token_provider</span>(
+        <span class="fn">DefaultAzureCredential</span>(),
+        <span class="str">"https://cognitiveservices.azure.com/.default"</span>,
+    )
+    <span class="kw">return</span> <span class="fn">AzureChatOpenAI</span>(
+        azure_endpoint=config.AZURE_OPENAI_ENDPOINT,
+        azure_deployment=config.MODEL_DEPLOYMENT_NAME,
+        azure_ad_token_provider=token_provider,
+        temperature=<span class="num">0</span>,
+        streaming=<span class="num">True</span>,
+    )
+
+<span class="kw">def</span> <span class="fn">build_agent</span>():
+    model = <span class="fn">_create_model</span>()
+    tools = <span class="fn">get_all_tools</span>()          <span class="cmt"># [list_tables, get_table_schema, query_database]</span>
+
+    <span class="kw">return</span> <span class="fn">create_react_agent</span>(
+        model=model,
+        tools=tools,
+        prompt=SYSTEM_PROMPT,
+    )</div>
+    <p class="slide-body" style="font-size:30px; margin-top:4px;">🔑 <strong>No API keys</strong> — <code>DefaultAzureCredential</code> + managed identity</p>
+  </div>
+  <aside class="speaker-notes" hidden>Here's the actual code from our demo's graph.py. Three things to note. First: authentication uses DefaultAzureCredential with get_bearer_token_provider. This auto-refreshes tokens — critical for long-running hosted agents where tokens expire after an hour. No API keys anywhere. Second: temperature=0 makes the model deterministic. Third: create_react_agent is deceptively simple — one call that builds the entire ReAct state graph with the agent node, tool node, and conditional routing.</aside>
+</article>

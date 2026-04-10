@@ -1,0 +1,89 @@
+:root, [data-theme="github-cosmos"] {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-card: rgba(255,255,255,0.03);
+  --border-card: rgba(255,255,255,0.2);
+  --text-primary: #e6edf3;
+  --text-secondary: rgba(230,237,243,0.75);
+  --accent-primary: #58a6ff;
+  --accent-secondary: #bc8cff;
+  --gradient-title: linear-gradient(135deg, #58a6ff, #bc8cff);
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Floating orbs for title slides */
+[data-theme="github-cosmos"] .slide[data-type="title-slide"] .slide-bg::before,
+:root .slide[data-type="title-slide"] .slide-bg::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(188,140,255,0.12) 0%, transparent 70%);
+  top: -120px;
+  right: -100px;
+  animation: orbFloat1 8s ease-in-out infinite;
+}
+
+[data-theme="github-cosmos"] .slide[data-type="title-slide"] .slide-bg::after,
+:root .slide[data-type="title-slide"] .slide-bg::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(88,166,255,0.1) 0%, transparent 70%);
+  bottom: -80px;
+  left: -60px;
+  animation: orbFloat2 10s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 20px) scale(1.08); }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -25px) scale(1.05); }
+}
+
+/* Diagram grid background */
+[data-theme="github-cosmos"] .slide[data-type="diagram"] .slide-bg::before,
+:root .slide[data-type="diagram"] .slide-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(88,166,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(88,166,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Transition slide radial */
+[data-theme="github-cosmos"] .slide[data-type="transition"] .slide-bg::before,
+:root .slide[data-type="transition"] .slide-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(88,166,255,0.06) 0%, transparent 70%);
+}
+
+/* Glassmorphism cards */
+[data-theme="github-cosmos"] .tool-card,
+:root .tool-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Code syntax colors */
+[data-theme="github-cosmos"] .kw, :root .kw { color: #ff7b72; }
+[data-theme="github-cosmos"] .str, :root .str { color: #a5d6ff; }
+[data-theme="github-cosmos"] .cmt, :root .cmt { color: #8b949e; }
+[data-theme="github-cosmos"] .fn, :root .fn { color: #d2a8ff; }
+[data-theme="github-cosmos"] .num, :root .num { color: #79c0ff; }
+[data-theme="github-cosmos"] .op, :root .op { color: #e6edf3; }
+[data-theme="github-cosmos"] .prop, :root .prop { color: #79c0ff; }
+[data-theme="github-cosmos"] .tag, :root .tag { color: #7ee787; }

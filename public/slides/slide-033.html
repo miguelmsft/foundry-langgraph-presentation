@@ -1,0 +1,23 @@
+<article class="slide" data-number="33" data-type="table" data-section="Demo">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">Sample Output: Supplier Scorecard</h1>
+    <table class="slide-table">
+      <thead>
+        <tr><th>Supplier</th><th style="text-align:center;">Total Shipments</th><th style="text-align:center;">Delayed/Late</th><th style="text-align:center;">Rate</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>🔴 OptiVision</td><td style="text-align:center;">1</td><td style="text-align:center;">1</td><td style="text-align:center;"><strong>100%</strong></td></tr>
+        <tr><td>🔴 WirePlex</td><td style="text-align:center;">1</td><td style="text-align:center;">1</td><td style="text-align:center;"><strong>100%</strong></td></tr>
+        <tr><td>🟡 HydroMax Inc</td><td style="text-align:center;">3</td><td style="text-align:center;">2</td><td style="text-align:center;"><strong>67%</strong></td></tr>
+        <tr><td>🟡 RoboFlex</td><td style="text-align:center;">2</td><td style="text-align:center;">1</td><td style="text-align:center;"><strong>50%</strong></td></tr>
+        <tr><td>🟢 CircuitPro</td><td style="text-align:center;">2</td><td style="text-align:center;">0</td><td style="text-align:center;">0%</td></tr>
+        <tr><td>🟢 GearMaster</td><td style="text-align:center;">1</td><td style="text-align:center;">0</td><td style="text-align:center;">0%</td></tr>
+        <tr><td>🟢 MetalWorks</td><td style="text-align:center;">1</td><td style="text-align:center;">0</td><td style="text-align:center;">0%</td></tr>
+        <tr><td>🟢 <em>7 others</em></td><td style="text-align:center;">—</td><td style="text-align:center;">0</td><td style="text-align:center;">0%</td></tr>
+      </tbody>
+    </table>
+    <blockquote class="slide-quote"><p>The agent noted: <em>&ldquo;Low-volume suppliers (1 shipment) should be interpreted with caution&rdquo;</em></p></blockquote>
+  </div>
+  <aside class="speaker-notes" hidden>This is the supplier scorecard from the agent's output. It correctly classified both delivered_late and delayed statuses as problematic and calculated delay percentages. What I love is the caveat at the bottom — the agent noted that OptiVision and WirePlex each have only one shipment, so a 100% delay rate should be interpreted with caution. That's genuine analytical reasoning, not just number crunching. The SQL it wrote joined the shipments data, grouped by supplier, and calculated rates.</aside>
+</article>

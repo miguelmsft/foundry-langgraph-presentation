@@ -1,0 +1,18 @@
+<article class="slide" data-number="38" data-type="title-slide" data-section="Closing">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">Thank You!</h1>
+    <p class="slide-subtitle">Miguel Martinez</p>
+    <p class="slide-body" style="font-size:30px;">🔗 <strong>Demo repo:</strong> github.com/migmartinez/foundry-langgraph-demo</p>
+    <p class="slide-body" style="font-size:36px; margin-top:8px;">💬 <strong>Questions?</strong></p>
+    <div class="code-block" style="font-size:24px; padding:20px 28px; max-width:820px; text-align:left; white-space:pre; overflow-x:auto; line-height:1.65; margin-top:8px;"><span style="color:var(--accent-primary); font-weight:600;">       LangGraph → Foundry Cheat Sheet</span>
+
+  <span class="kw">Build:</span>    <span class="fn">create_react_agent</span>(model, tools, prompt)
+  <span class="kw">Wrap:</span>     <span class="fn">from_langgraph</span>(agent).<span class="fn">run</span>()
+  <span class="kw">Package:</span>  Dockerfile + agent.yaml + azure.yaml
+  <span class="kw">Deploy:</span>   azd up
+  <span class="kw">Test:</span>     azd ai agent invoke <span class="str">"..."</span>
+  <span class="kw">Monitor:</span>  Foundry portal → Tracing</div>
+  </div>
+  <aside class="speaker-notes" hidden>Thank you all for your time. The key takeaway: building a LangGraph agent and deploying it to Foundry is remarkably simple — create_react_agent for the agent, from_langgraph for the bridge, three config files for packaging, and azd up for deployment. The power is in what you get for free: managed infrastructure, auto-scaling, Entra ID, conversation management, full observability, and one-click publishing to Teams. I'm happy to take questions. The demo repo is available — feel free to clone it, modify it, and deploy your own agents.</aside>
+</article>

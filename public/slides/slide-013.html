@@ -1,0 +1,42 @@
+<article class="slide" data-number="13" data-type="diagram" data-section="Building Agents with LangGraph">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">What is LangGraph?</h1>
+    <p class="slide-subtitle" style="font-size:30px;">A framework for building AI agents as <strong style="-webkit-text-fill-color:var(--accent-primary);">state graphs</strong>.</p>
+    <div style="display:flex; gap:40px; align-items:flex-start; justify-content:center;">
+      <div class="flow-container" style="flex:1; max-width:500px;">
+        <div class="flow-step">
+          <div class="flow-step-title">START</div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step flow-highlight">
+          <div class="flow-step-title">🧠 Agent Node</div>
+          <div class="flow-step-desc">LLM decides: use tool or respond?</div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-branch">
+          <div class="flow-step flow-step-success" style="min-width:180px;">
+            <div class="flow-step-title" style="font-size:26px;">Tool Call</div>
+            <div class="flow-step-desc" style="font-size:22px;">→ Tool Node</div>
+          </div>
+          <div class="flow-step" style="min-width:180px;">
+            <div class="flow-step-title" style="font-size:26px;">No Tool</div>
+            <div class="flow-step-desc" style="font-size:22px;">→ END</div>
+          </div>
+        </div>
+        <div style="text-align:center; font-size:22px; color:var(--accent-secondary); margin-top:4px;">↩ Tool results loop back to Agent Node</div>
+      </div>
+      <div style="flex:0.7; display:flex; flex-direction:column; gap:12px; padding-top:10px;">
+        <div style="font-size:28px; color:var(--text-primary); font-weight:600; font-family:var(--font-heading);">Key concepts:</div>
+        <div style="font-size:26px; color:var(--text-secondary); line-height:1.6;">
+          <strong style="color:var(--accent-primary);">Nodes</strong> = Functions<br/>
+          <strong style="color:var(--accent-primary);">Edges</strong> = Transitions<br/>
+          <strong style="color:var(--accent-primary);">State</strong> = Message history<br/>
+          <strong style="color:var(--accent-primary);">Cycles</strong> = Agent loops
+        </div>
+        <p style="font-size:24px; color:var(--text-secondary); margin-top:8px;">Not just chains — <strong style="color:var(--accent-primary);">it&#x27;s a state machine</strong> with cycles, conditions, and persistence.</p>
+      </div>
+    </div>
+  </div>
+  <aside class="speaker-notes" hidden>LangGraph is LangChain's low-level orchestration framework. The key mental model is a graph: nodes are functions, edges are transitions. Unlike simple LLM chains that go A → B → C, LangGraph supports cycles — the agent can loop back, retry, iterate. It's at version 1.1.6, released in April 2026, and is used in production by companies like Klarna, Replit, and Elastic. The key difference from LangChain proper: LangChain is high-level composable abstractions, LangGraph is low-level full-control state graphs.</aside>
+</article>

@@ -1,0 +1,28 @@
+<article class="slide" data-number="19" data-type="code-example" data-section="LangGraph → Foundry">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">from_langgraph() — The One-Line Bridge</h1>
+    <div class="code-label">main.py — Container entrypoint</div>
+    <div class="code-block"><span class="kw">from</span> dotenv <span class="kw">import</span> load_dotenv
+<span class="fn">load_dotenv</span>(override=<span class="num">True</span>)
+
+<span class="kw">from</span> LogisticsAgent.observability <span class="kw">import</span> setup_observability
+<span class="kw">from</span> LogisticsAgent.data.init_db <span class="kw">import</span> init_database
+<span class="kw">from</span> LogisticsAgent.graph <span class="kw">import</span> build_agent
+<span class="kw">from</span> azure.ai.agentserver.langgraph <span class="kw">import</span> from_langgraph
+
+
+<span class="kw">def</span> <span class="fn">main</span>() -> <span class="num">None</span>:
+    <span class="fn">setup_observability</span>()         <span class="cmt"># 1. Enable telemetry</span>
+    <span class="fn">init_database</span>()               <span class="cmt"># 2. Initialize SQLite from CSVs</span>
+    agent = <span class="fn">build_agent</span>()         <span class="cmt"># 3. Build the LangGraph agent</span>
+    adapter = <span class="fn">from_langgraph</span>(agent)
+    adapter.<span class="fn">run</span>()                 <span class="cmt"># 4. Start HTTP server on :8088</span>
+
+
+<span class="kw">if</span> __name__ == <span class="str">"__main__"</span>:
+    <span class="fn">main</span>()</div>
+    <p class="slide-body" style="font-size:30px; margin-top:4px;"><strong>4 steps.</strong> Setup telemetry → Init data → Build agent → <code>from_langgraph(agent).run()</code></p>
+  </div>
+  <aside class="speaker-notes" hidden>This is the entire container entrypoint. Four steps: set up observability with Application Insights and the LangChain OpenTelemetry tracer, initialize the SQLite database from CSV files, build the LangGraph agent with the model, tools, and prompt, and then wrap it with from_langgraph() and call .run(). That last call starts an HTTP server on port 8088 that speaks Foundry's Responses API. This is the actual main.py from our demo — no simplification needed because it really is this simple.</aside>
+</article>

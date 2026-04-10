@@ -1,0 +1,50 @@
+<article class="slide" data-number="22" data-type="table" data-section="LangGraph → Foundry">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">Gotchas &amp; Lessons Learned</h1>
+    <table class="slide-table compact">
+      <thead>
+        <tr><th>#</th><th>Issue</th><th>What Happened</th><th>Fix</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td><strong>agent.yaml schema</strong></td>
+          <td><code>kind: hosted</code> nested under <code>template:</code> — azd rejected it</td>
+          <td>Move to <strong>root level</strong></td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td><strong>Region</strong></td>
+          <td>East US 2 had capability host bugs</td>
+          <td>Use <strong>North Central US</strong></td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td><strong>pip upgrade</strong></td>
+          <td>Base python:3.12-slim pip chokes on extras</td>
+          <td><code>RUN pip install --upgrade pip</code></td>
+        </tr>
+        <tr>
+          <td><strong>4</strong></td>
+          <td><strong>Soft-delete</strong></td>
+          <td>Redeploying with same name fails</td>
+          <td><code>az cognitiveservices account purge</code></td>
+        </tr>
+        <tr>
+          <td><strong>5</strong></td>
+          <td><strong>Model name</strong></td>
+          <td><code>gpt-5.4-mini</code> vs <code>gpt-54-mini</code></td>
+          <td>Deployment name can&#x27;t have dots</td>
+        </tr>
+        <tr>
+          <td><strong>6</strong></td>
+          <td><strong>Starter template</strong></td>
+          <td>Must use <code>azd-ai-starter-basic</code></td>
+          <td>Don&#x27;t hand-roll the Bicep</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="speaker-notes" hidden>These are real issues we hit building this demo. Number 1 was the most frustrating — the agent.yaml schema changed, and older docs still show the nested format. Number 2: we initially deployed to East US 2 and the capability host creation failed silently. North Central US worked perfectly. Number 3 is a classic Python gotcha — always upgrade pip. Number 4: Cognitive Services accounts have a 48-hour soft-delete period. Number 5: Azure resource names can't have dots. And number 6: don't try to write your own Bicep — the starter template handles everything automatically.</aside>
+</article>

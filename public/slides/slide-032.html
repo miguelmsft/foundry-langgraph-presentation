@@ -1,0 +1,22 @@
+<article class="slide" data-number="32" data-type="table" data-section="Demo">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">Sample Output: Stock Shortages</h1>
+    <p class="slide-body" style="font-size:32px;">The agent found <strong>9 parts</strong> below reorder point:</p>
+    <table class="slide-table compact">
+      <thead>
+        <tr><th>Part ID</th><th>Part Name</th><th style="text-align:right;">Current</th><th style="text-align:right;">Reorder</th><th style="text-align:right;">Shortfall</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>P001</td><td>Hydraulic Pump Assembly</td><td style="text-align:right;">12</td><td style="text-align:right;">50</td><td style="text-align:right;"><strong>38</strong></td></tr>
+        <tr><td>P017</td><td>Hydraulic Hose HH-3M</td><td style="text-align:right;">15</td><td style="text-align:right;">40</td><td style="text-align:right;"><strong>25</strong></td></tr>
+        <tr><td>P003</td><td>Control Board PCB v3</td><td style="text-align:right;">8</td><td style="text-align:right;">25</td><td style="text-align:right;"><strong>17</strong></td></tr>
+        <tr><td>P005</td><td>Servo Motor SM-400</td><td style="text-align:right;">3</td><td style="text-align:right;">15</td><td style="text-align:right;"><strong>12</strong></td></tr>
+        <tr><td>P012</td><td>Robotic Arm Joint RAJ-3</td><td style="text-align:right;">2</td><td style="text-align:right;">8</td><td style="text-align:right;"><strong>6</strong></td></tr>
+      </tbody>
+    </table>
+    <p class="slide-body" style="font-size:32px; margin-top:8px;">💰 Biggest shortage by value: <strong>P001 — 38 units × $2,450 = $93,100</strong></p>
+    <blockquote class="slide-quote"><p>The agent ranked by shortfall quantity <strong>without being told how to sort</strong>.</p></blockquote>
+  </div>
+  <aside class="speaker-notes" hidden>This is actual output from testing. The agent correctly identified all 9 parts below their reorder point and ranked them by shortfall quantity — we never told it to sort, it decided that was the most useful presentation. It also calculated the dollar impact of each shortage. The P001 Hydraulic Pump Assembly is the most critical at $93,100 in missing inventory value. Notice that the agent used the right SQL: WHERE quantity_on_hand &lt; reorder_point.</aside>
+</article>

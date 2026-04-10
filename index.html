@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="github-cosmos">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LangGraph Agents on Microsoft Foundry</title>
+
+  <link rel="stylesheet" href="/css/themes/github-cosmos.css" />
+  <link rel="stylesheet" href="/css/themes/warm.css" />
+  <link rel="stylesheet" href="/css/themes/corporate.css" />
+  <link rel="stylesheet" href="/css/themes/cyberpunk.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/slides.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+  <link rel="stylesheet" href="/css/print.css" />
+</head>
+<body>
+  <div id="presentation">
+    <div id="slide-scaler">
+      <div id="slide-container"></div>
+    </div>
+  </div>
+
+  <div id="progress-bar"></div>
+  <div id="slide-counter">1 / 38</div>
+  <div id="section-label"></div>
+
+  <div id="notes-overlay" class="speaker-notes-overlay"></div>
+
+  <button id="admin-toggle" title="Settings (Esc to close)">⚙</button>
+  <div id="admin-overlay"></div>
+  <div id="admin-panel">
+    <div class="admin-section">
+      <h3>🎨 Theme</h3>
+      <label for="theme-select">Presentation theme</label>
+      <select id="theme-select">
+        <option value="github-cosmos">GitHub Cosmos (Dark)</option>
+        <option value="warm">Warm &amp; Welcoming</option>
+        <option value="corporate">Corporate Clean</option>
+        <option value="cyberpunk">Neon Cyberpunk</option>
+      </select>
+    </div>
+
+    <div class="admin-section">
+      <h3>📝 Speaker Notes</h3>
+      <div class="toggle-row">
+        <span>Show notes overlay</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notes-toggle" />
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="admin-section">
+      <h3>🔢 Go to Slide</h3>
+      <div class="goto-row">
+        <input type="number" id="goto-input" min="1" max="38" placeholder="Slide #" />
+        <button id="goto-btn">Go</button>
+      </div>
+    </div>
+
+    <div class="admin-section">
+      <h3>📄 PDF Export</h3>
+      <button id="pdf-btn">Export PDF (Print)</button>
+    </div>
+
+    <div class="admin-section">
+      <h3>📋 Slide Checklist</h3>
+      <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">Uncheck to hide slides</p>
+      <div id="slide-checklist" class="slide-checklist"></div>
+    </div>
+  </div>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

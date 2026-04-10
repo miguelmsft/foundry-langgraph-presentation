@@ -1,0 +1,38 @@
+<article class="slide" data-number="5" data-type="diagram" data-section="Microsoft Foundry &amp; Hosted Agents">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">How Hosted Agents Work</h1>
+    <div class="ecosystem-container">
+      <div class="ecosystem-title">Microsoft Foundry</div>
+      <div class="ecosystem-row">
+        <div class="ecosystem-item" style="flex:1.2;">
+          <div class="ecosystem-item-title">📦 Your Container (Linux AMD64)</div>
+          <div class="ecosystem-item-desc" style="text-align:left; padding:6px 0;">
+            <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+              <div style="background:var(--bg-secondary); border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:10px 18px; text-align:center;">
+                <div style="font-weight:600; color:var(--accent-primary); font-size:28px;">LangGraph Agent</div>
+                <div style="font-size:24px; color:var(--text-secondary);">+ Tools</div>
+              </div>
+              <div style="display:flex; align-items:center; font-size:24px; color:var(--text-secondary);">→</div>
+              <div style="background:var(--bg-secondary); border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:10px 18px; text-align:center;">
+                <div style="font-weight:600; color:var(--accent-secondary); font-size:28px;">Hosting Adapter</div>
+                <div style="font-size:24px; color:var(--text-secondary);">from_langgraph() · HTTP :8088</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; font-size:22px; color:var(--text-secondary);">▼ Responses API</div>
+      <div class="ecosystem-shared">
+        <div class="ecosystem-shared-title">Foundry Agent Service</div>
+        <ul>
+          <li>Auto-scaling (1–5 replicas)</li>
+          <li>Conversation management</li>
+          <li>Entra ID authentication</li>
+          <li>Application Insights telemetry</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside class="speaker-notes" hidden>Here's the architecture. Your code lives in a standard Docker container — Linux AMD64, listening on port 8088. Inside the container, the hosting adapter wraps your LangGraph agent into an HTTP server that speaks Foundry's Responses API. Foundry Agent Service sits around your container handling everything else: auto-scaling from 1 to 5 replicas, conversation state management, Entra ID authentication, and telemetry via Application Insights. The container specs range from 0.25 vCPU / 0.5 GiB up to 4 vCPU / 8 GiB.</aside>
+</article>

@@ -1,0 +1,64 @@
+@media print {
+  @page {
+    size: 10in 5.625in landscape;
+    margin: 0;
+  }
+
+  body {
+    background: white;
+  }
+
+  #presentation {
+    width: auto;
+    height: auto;
+    overflow: visible;
+    background: none;
+  }
+
+  #slide-scaler {
+    position: static;
+    transform: none !important;
+    width: auto;
+    height: auto;
+  }
+
+  #slide-container {
+    width: auto;
+    height: auto;
+    position: static;
+  }
+
+  .slide {
+    position: relative !important;
+    width: 10in !important;
+    height: 5.625in !important;
+    page-break-after: always;
+    page-break-inside: avoid;
+    opacity: 1 !important;
+    visibility: visible !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    overflow: hidden;
+  }
+
+  .slide.print-hidden {
+    display: none !important;
+  }
+
+  #admin-toggle,
+  #admin-panel,
+  #admin-overlay,
+  #slide-counter,
+  #section-label,
+  #progress-bar,
+  .speaker-notes-overlay,
+  .speaker-notes,
+  .slide-bg {
+    display: none !important;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,34 @@
+<article class="slide" data-number="9" data-type="code-example" data-section="Microsoft Foundry &amp; Hosted Agents">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">azure.yaml — Deployment Configuration</h1>
+    <div class="code-block"><span class="kw">requiredVersions:</span>
+  <span class="kw">extensions:</span>
+    <span class="kw">azure.ai.agents:</span> <span class="str">&gt;=0.1.0-preview</span>
+
+<span class="kw">name:</span> <span class="str">foundry-langgraph-demo</span>
+
+<span class="kw">services:</span>
+  <span class="kw">LogisticsAgentLG:</span>
+    <span class="kw">project:</span> <span class="str">src/LogisticsAgent</span>
+    <span class="kw">host:</span> <span class="str">azure.ai.agent</span>          <span class="cmt"># ← KEY: NOT host: containerapp</span>
+    <span class="kw">language:</span> <span class="str">docker</span>
+    <span class="kw">docker:</span>
+      <span class="kw">remoteBuild:</span> <span class="num">true</span>           <span class="cmt"># ← No local Docker needed!</span>
+    <span class="kw">config:</span>
+      <span class="kw">container:</span>
+        <span class="kw">resources:</span>
+          <span class="kw">cpu:</span> <span class="str">"1"</span>
+          <span class="kw">memory:</span> <span class="str">2Gi</span>
+      <span class="kw">deployments:</span>
+        - <span class="kw">model:</span>
+            <span class="kw">format:</span> <span class="str">OpenAI</span>
+            <span class="kw">name:</span> <span class="str">gpt-5.4-mini</span>
+            <span class="kw">version:</span> <span class="str">"2026-03-17"</span>
+          <span class="kw">name:</span> <span class="str">gpt-54-mini</span>
+          <span class="kw">sku:</span>
+            <span class="kw">capacity:</span> <span class="num">10</span>
+            <span class="kw">name:</span> <span class="str">GlobalStandard</span></div>
+  </div>
+  <aside class="speaker-notes" hidden>The azure.yaml is what azd reads to understand how to deploy your agent. The most important line is host: azure.ai.agent — this tells azd this is a Foundry Hosted Agent, NOT a generic Container App. If you accidentally write host: containerapp, you'll deploy to Azure Container Apps directly and lose all the Foundry benefits. The remoteBuild: true setting is huge: your container gets built in Azure via ACR Build Tasks, so you don't need Docker installed locally at all.</aside>
+</article>

@@ -1,0 +1,46 @@
+<article class="slide" data-number="29" data-type="diagram" data-section="Demo">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">The Complete Architecture</h1>
+    <div class="ecosystem-container">
+      <div class="ecosystem-title">Microsoft Foundry</div>
+      <div class="ecosystem-row">
+        <div class="ecosystem-item" style="flex:1;">
+          <div class="ecosystem-item-title">📦 Hosted Agent Container</div>
+          <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:8px;">
+            <div style="background:var(--bg-secondary); border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:8px 14px; text-align:center;">
+              <div style="font-weight:600; color:var(--accent-primary); font-size:26px;">LangGraph ReAct Agent</div>
+              <div style="font-size:22px; color:var(--text-secondary);">3 tools</div>
+            </div>
+            <div style="display:flex; align-items:center; font-size:20px; color:var(--text-secondary);">→</div>
+            <div style="background:var(--bg-secondary); border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:8px 14px; text-align:center;">
+              <div style="font-weight:600; color:var(--text-primary); font-size:26px;">SQLite Database</div>
+              <div style="font-size:22px; color:var(--text-secondary);">inventory (25) · shipments (20)</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:8px;">
+            <div style="background:var(--bg-secondary); border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:8px 14px; text-align:center;">
+              <div style="font-weight:600; color:var(--accent-secondary); font-size:26px;">gpt-5.4-mini</div>
+              <div style="font-size:22px; color:var(--text-secondary);">GlobalStandard</div>
+            </div>
+            <div style="display:flex; align-items:center; font-size:20px; color:var(--text-secondary);">→</div>
+            <div style="background:var(--bg-secondary); border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:8px 14px; text-align:center;">
+              <div style="font-weight:600; color:var(--accent-primary); font-size:26px;">Hosting Adapter</div>
+              <div style="font-size:22px; color:var(--text-secondary);">from_langgraph() · HTTP :8088</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; font-size:20px; color:var(--text-secondary);">▼ OpenTelemetry</div>
+      <div class="ecosystem-shared">
+        <div class="ecosystem-shared-title">Application Insights + Foundry Control Plane</div>
+        <ul>
+          <li>Tracing</li>
+          <li>Monitoring</li>
+          <li>Conversations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside class="speaker-notes" hidden>The full picture. The container holds the LangGraph agent with its three SQLite tools and the hosting adapter. The agent calls gpt-5.4-mini deployed as GlobalStandard in the same Foundry account. The hosting adapter wraps everything into the HTTP server on port 8088. OpenTelemetry traces flow automatically to Application Insights and the Foundry Control Plane. The SQLite database is bundled inside the container image — built at Docker build time from CSV files.</aside>
+</article>

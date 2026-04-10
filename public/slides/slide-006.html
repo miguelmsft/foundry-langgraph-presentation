@@ -1,0 +1,19 @@
+<article class="slide" data-number="6" data-type="code-example" data-section="Microsoft Foundry &amp; Hosted Agents">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">The Hosting Adapter — One Line of Code</h1>
+    <div class="code-block"><span class="kw">from</span> azure.ai.agentserver.langgraph <span class="kw">import</span> from_langgraph
+
+adapter = <span class="fn">from_langgraph</span>(my_agent)
+adapter.<span class="fn">run</span>()  <span class="cmt"># HTTP server on localhost:8088</span></div>
+    <p class="slide-body" style="font-size:32px; margin-top:4px;"><strong>What it handles:</strong></p>
+    <ul class="slide-list">
+      <li>🔄 <strong>Protocol translation</strong> — Foundry Responses API ↔ LangGraph messages</li>
+      <li>💬 <strong>Conversation management</strong> — Message serialization, state tracking</li>
+      <li>📡 <strong>Streaming</strong> — Token-by-token streaming to clients</li>
+      <li>📊 <strong>OpenTelemetry</strong> — TracerProvider, MeterProvider, LoggerProvider setup</li>
+      <li>🔐 <strong>Authentication</strong> — Entra ID token flow integration</li>
+    </ul>
+  </div>
+  <aside class="speaker-notes" hidden>This is what makes the whole thing work. The azure-ai-agentserver-langgraph package — currently at version 1.0.0b17 in beta — provides a single function: from_langgraph(). You pass it your compiled LangGraph agent, and it wraps it into an HTTP server that speaks Foundry's Responses API. It handles all the complex protocol translation between Foundry's request/response format and LangGraph's native state messages. It also sets up OpenTelemetry automatically — TracerProvider, MeterProvider, LoggerProvider — with Azure Monitor exporters.</aside>
+</article>

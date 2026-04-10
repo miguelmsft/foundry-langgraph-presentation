@@ -1,0 +1,24 @@
+<article class="slide" data-number="21" data-type="boxes" data-section="LangGraph → Foundry">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">What You Get After Deployment</h1>
+    <div class="info-box" style="font-size:26px; text-align:left; padding:18px 24px; margin-bottom:4px; line-height:1.6;">
+      <div style="color:var(--accent-primary); font-weight:600; margin-bottom:6px;">✓ Done: Deploying service LogisticsAgentLG</div>
+      <div>🎯 <strong>Agent playground:</strong> <code style="font-size:20px;">https://ai.azure.com/.../agents/LogisticsAgentLG/build</code></div>
+      <div>🔗 <strong>Agent endpoint:</strong> <code style="font-size:20px;">https://ai-account-xxx.services.ai.azure.com/.../agents/LogisticsAgentLG/v1</code></div>
+    </div>
+    <table class="slide-table compact">
+      <thead>
+        <tr><th>What</th><th>How</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>💬 <strong>Chat in browser</strong></td><td>Agent Playground in Foundry portal</td></tr>
+        <tr><td>🔌 <strong>Call via API</strong></td><td>Responses API endpoint</td></tr>
+        <tr><td>📊 <strong>View traces</strong></td><td>Foundry portal → Tracing</td></tr>
+        <tr><td>🖥️ <strong>CLI access</strong></td><td><code>azd ai agent invoke</code> / <code>show</code> / <code>monitor</code></td></tr>
+        <tr><td>📢 <strong>Publish</strong></td><td>One-click to Teams, M365 Copilot</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="speaker-notes" hidden>After azd up completes — usually about 5 minutes for provisioning plus a few minutes for the build — you get two URLs. The playground URL opens the Foundry portal where you can chat with your agent directly in the browser. The endpoint URL is the Responses API that any client can call programmatically. You also get CLI commands for quick testing. From the Foundry portal you can see all traces, conversations, and monitoring dashboards. And when you're ready, you can publish the agent to Teams or M365 Copilot with one click.</aside>
+</article>

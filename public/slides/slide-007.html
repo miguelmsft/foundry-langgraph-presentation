@@ -1,0 +1,14 @@
+<article class="slide" data-number="7" data-type="list" data-section="Microsoft Foundry &amp; Hosted Agents">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">What Foundry Manages For You</h1>
+    <ul class="slide-list">
+      <li>⚡ <strong>Auto-scaling</strong> — 1 to 5 replicas, scale-to-zero supported</li>
+      <li>🔐 <strong>Entra ID Identity</strong> — Managed identity pre-publish; dedicated identity post-publish</li>
+      <li>📊 <strong>Telemetry &amp; Tracing</strong> — OpenTelemetry → Application Insights, automatic</li>
+      <li>📢 <strong>Publishing</strong> — One-click to Teams, M365 Copilot, Entra Agent Registry</li>
+      <li>🛡️ <strong>Enterprise Security</strong> — RBAC, content filters, guardrails</li>
+    </ul>
+  </div>
+  <aside class="speaker-notes" hidden>Let me walk through what Foundry gives you for free. Auto-scaling between 1 and 5 replicas — you can even set min to 0 for scale-to-zero, but expect cold starts. Identity management is interesting: before you publish, your agent uses the project's system-assigned managed identity. After publishing, Foundry provisions a dedicated identity for your agent — and you need to reassign permissions, which is a gotcha to watch for. Telemetry flows automatically to Application Insights. And publishing is a one-click operation to Teams, M365 Copilot, or a stable API endpoint.</aside>
+</article>

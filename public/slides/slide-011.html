@@ -1,0 +1,24 @@
+<article class="slide" data-number="11" data-type="diagram" data-section="Microsoft Foundry &amp; Hosted Agents">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">One Command Deployment: <code style="font-size:inherit; background:none; border:none; padding:0;">azd up</code></h1>
+    <div class="flow-container" style="align-items:flex-start; gap:0;">
+      <div class="flow-step flow-highlight" style="width:100%; max-width:800px; text-align:left; padding:12px 24px;">
+        <div class="flow-step-title" style="font-size:28px;">1. PROVISION <span style="color:var(--text-secondary); font-weight:400; font-size:24px;">(azd provision) ~5 min</span></div>
+        <div class="flow-step-desc" style="font-size:24px; text-align:left;">Resource Group · Foundry Account + Project · Model Deployment (gpt-5.4-mini) · ACR · Application Insights · Capability Host ← auto-created!</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step" style="width:100%; max-width:800px; text-align:left; padding:12px 24px;">
+        <div class="flow-step-title" style="font-size:28px;">2. BUILD <span style="color:var(--text-secondary); font-weight:400; font-size:24px;">(remote, no local Docker)</span></div>
+        <div class="flow-step-desc" style="font-size:24px; text-align:left;">Sends Dockerfile to ACR · Builds linux/amd64 image</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step flow-step-success" style="width:100%; max-width:800px; text-align:left; padding:12px 24px;">
+        <div class="flow-step-title" style="font-size:28px;">3. DEPLOY</div>
+        <div class="flow-step-desc" style="font-size:24px; text-align:left;">Pushes image to ACR · Creates agent version · Starts container · Outputs: playground URL + endpoint URL</div>
+      </div>
+    </div>
+    <p class="text-sm" style="text-align:center; margin-top:6px;"><strong>Setup:</strong> <code>azd init -t Azure-Samples/azd-ai-starter-basic</code> → <code>azd ai agent init -m agent.yaml</code> → <code>azd up</code></p>
+  </div>
+  <aside class="speaker-notes" hidden>Three setup commands and one deploy command — that's it. First, azd init pulls the official Foundry starter template which includes all the Bicep infrastructure. Then azd ai agent init imports your agent.yaml and wires it into azure.yaml. Then azd up does everything: provisions all Azure resources via Bicep, builds the container remotely, pushes to ACR, creates the hosted agent version, and starts it. The capability host gets auto-created by the Bicep template. After deployment you get the playground URL and the agent endpoint URL.</aside>
+</article>

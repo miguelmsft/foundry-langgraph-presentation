@@ -1,0 +1,23 @@
+<article class="slide" data-number="18" data-type="code-example" data-section="LangGraph → Foundry">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">Connecting to Foundry Models</h1>
+    <div class="code-block"><span class="kw">from</span> langchain_openai <span class="kw">import</span> AzureChatOpenAI
+<span class="kw">from</span> azure.identity <span class="kw">import</span> DefaultAzureCredential, get_bearer_token_provider
+
+<span class="cmt"># Auto-refreshing token provider — no API keys, no expiration issues</span>
+token_provider = <span class="fn">get_bearer_token_provider</span>(
+    <span class="fn">DefaultAzureCredential</span>(),
+    <span class="str">"https://cognitiveservices.azure.com/.default"</span>,
+)
+
+model = <span class="fn">AzureChatOpenAI</span>(
+    azure_endpoint=<span class="str">"https://my-foundry.openai.azure.com"</span>,
+    api_version=<span class="str">"2025-03-01-preview"</span>,
+    azure_deployment=<span class="str">"gpt-54-mini"</span>,
+    azure_ad_token_provider=token_provider,  <span class="cmt"># ← Auto-refreshes!</span>
+)</div>
+    <p class="slide-body" style="font-size:30px; margin-top:8px;">🔑 <strong>Key point:</strong> <code>get_bearer_token_provider</code> auto-refreshes tokens.<br/>Direct token fetching causes <strong>401 errors</strong> after ~1 hour.</p>
+  </div>
+  <aside class="speaker-notes" hidden>The model connection pattern is critical to get right. We use AzureChatOpenAI from langchain-openai. The crucial detail is using get_bearer_token_provider instead of fetching tokens directly. Token providers automatically refresh when tokens expire — typically after one hour. If you fetch a token directly and pass it as a string, your hosted agent will start failing with 401 errors after an hour. DefaultAzureCredential tries multiple auth methods in order: environment variables, managed identity, Azure CLI, and more.</aside>
+</article>

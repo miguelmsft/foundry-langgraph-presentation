@@ -1,0 +1,40 @@
+<article class="slide" data-number="25" data-type="table" data-section="Demo">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">The Data</h1>
+    <div class="two-col">
+      <div>
+        <h3 class="section-heading">📦 inventory table (25 rows)</h3>
+        <table class="slide-table compact">
+          <thead><tr><th>Column</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>part_id</td><td>P001</td></tr>
+            <tr><td>part_name</td><td>Hydraulic Pump Assembly</td></tr>
+            <tr><td>category</td><td>Hydraulics</td></tr>
+            <tr><td>warehouse</td><td>Warehouse-A</td></tr>
+            <tr><td>quantity_on_hand</td><td>12</td></tr>
+            <tr><td>reorder_point</td><td>50</td></tr>
+            <tr><td>unit_cost</td><td>$2,450.00</td></tr>
+            <tr><td>supplier</td><td>HydroMax Inc</td></tr>
+            <tr><td>lead_time_days</td><td>14</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3 class="section-heading">🚚 shipments table (20 rows)</h3>
+        <table class="slide-table compact">
+          <thead><tr><th>Column</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>shipment_id</td><td>SH001</td></tr>
+            <tr><td>part_id</td><td>P001</td></tr>
+            <tr><td>supplier</td><td>HydroMax Inc</td></tr>
+            <tr><td>status</td><td>delivered_late / in_transit / delayed / ordered</td></tr>
+            <tr><td>shipping_method</td><td>freight / air / ocean / ground</td></tr>
+            <tr><td>origin_city</td><td>Detroit</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <aside class="speaker-notes" hidden>Two tables, both bundled as CSVs that get loaded into SQLite at container build time. The inventory table tracks parts, stock levels, reorder points, costs, suppliers, and lead times. The shipments table tracks active and historical shipments with their status, dates, and delivery info. The agent doesn't know the schema in advance — it discovers it by calling list_tables and get_table_schema tools.</aside>
+</article>

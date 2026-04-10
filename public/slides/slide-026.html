@@ -1,0 +1,46 @@
+<article class="slide" data-number="26" data-type="diagram" data-section="Demo">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">How the Agent Works</h1>
+    <div class="flow-container">
+      <div class="flow-step" style="border-color:var(--accent-primary);">
+        <div class="flow-step-title">💬 User</div>
+        <div class="flow-step-desc">&ldquo;Analyze inventory and identify critical shortages&rdquo;</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-title">🧠 LLM: &ldquo;What tables exist?&rdquo;</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step flow-step-success">
+        <div class="flow-step-title">🔧 list_tables</div>
+        <div class="flow-step-desc">→ [&ldquo;inventory&rdquo;, &ldquo;shipments&rdquo;]</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-title">🧠 LLM: &ldquo;Schema next&rdquo;</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step flow-step-success">
+        <div class="flow-step-title">🔧 get_table_schema</div>
+        <div class="flow-step-desc">→ {columns: [...], row_count: 25}</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-title">🧠 LLM writes SQL</div>
+        <div class="flow-step-desc">→ WHERE qty &lt; reorder_point</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step flow-highlight">
+        <div class="flow-step-title">🔧 query_database (×5–8)</div>
+        <div class="flow-step-desc">→ shortages, delays, values</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step flow-step-success">
+        <div class="flow-step-title">📊 LLM writes final report</div>
+        <div class="flow-step-desc">6 sections + emoji + recommendations</div>
+      </div>
+    </div>
+  </div>
+  <aside class="speaker-notes" hidden>Here's the reasoning flow. The agent starts by discovering the tables, then learns the schema, then runs SQL queries — typically 5 to 8 of them — to gather data about shortages, delays, supplier performance, inventory values, and upcoming risks. Finally, it synthesizes everything into a structured report. The key point is that the agent decides autonomously what to do. You don't tell it which SQL to write or how many queries to run. Typically this takes about 15-20 seconds total.</aside>
+</article>

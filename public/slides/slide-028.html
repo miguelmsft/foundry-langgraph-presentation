@@ -1,0 +1,36 @@
+<article class="slide" data-number="28" data-type="boxes" data-section="Demo">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">The Tools</h1>
+    <div class="tool-grid tool-grid-3">
+      <div class="tool-card">
+        <div class="tool-card-icon">🔍</div>
+        <div class="tool-card-title">list_tables</div>
+        <div class="tool-card-body">Discover available tables</div>
+        <div class="tool-card-footer">Safety: Read-only connection</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">📋</div>
+        <div class="tool-card-title">get_table_schema</div>
+        <div class="tool-card-body">Get column names, types, row count</div>
+        <div class="tool-card-footer">Safety: Table allowlist validation</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">📊</div>
+        <div class="tool-card-title">query_database</div>
+        <div class="tool-card-body">Execute SQL queries</div>
+        <div class="tool-card-footer">Safety: SELECT-only, keyword blocking, 100-row limit</div>
+      </div>
+    </div>
+    <h3 class="section-heading" style="margin-top:12px;">Safety layers in query_database:</h3>
+    <div class="code-block" style="font-size:22px; padding:16px 20px; white-space:pre; overflow-x:auto;"><span class="cmt"># 1. Only SELECT allowed</span>
+<span class="kw">if not</span> normalized.<span class="fn">startswith</span>(<span class="str">"SELECT"</span>):  ...
+<span class="cmt"># 2. Block dangerous keywords</span>
+dangerous = {<span class="str">"INSERT"</span>, <span class="str">"UPDATE"</span>, <span class="str">"DELETE"</span>, <span class="str">"DROP"</span>, <span class="str">"ALTER"</span>, <span class="str">"CREATE"</span>}
+<span class="cmt"># 3. Read-only database connection</span>
+conn = sqlite3.<span class="fn">connect</span>(<span class="str">"file:data/logistics.db?mode=ro"</span>, uri=<span class="num">True</span>)
+<span class="cmt"># 4. Truncate results to 100 rows</span>
+rows = cursor.<span class="fn">fetchall</span>()[:<span class="num">100</span>]</div>
+  </div>
+  <aside class="speaker-notes" hidden>We have three tools, each with a clear role. list_tables for discovery, get_table_schema for understanding structure, and query_database for execution. The safety features are layered: get_table_schema enforces a table allowlist. query_database uses read-only mode plus dangerous keyword blocking — the database is opened in read-only mode at the SQLite level, we validate that queries start with SELECT, we block dangerous keywords, and we truncate results to 100 rows. Defense-in-depth is important when you're letting an LLM write SQL.</aside>
+</article>

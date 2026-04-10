@@ -1,0 +1,38 @@
+<article class="slide" data-number="31" data-type="demo-placeholder" data-section="Demo">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">🖥️ LIVE DEMO — Foundry Portal Traces</h1>
+    <div class="demo-badge">🎮 LIVE DEMO</div>
+    <p class="slide-body" style="text-align:center; max-width:1100px;"><strong>Switching to the Foundry portal...</strong></p>
+    <div style="max-width:900px; text-align:left;">
+      <h3 class="section-heading" style="text-align:center;">What we&#x27;ll see for the request we just sent:</h3>
+      <div class="flow-container" style="margin-top:10px; align-items:flex-start;">
+        <div class="flow-step" style="width:100%; max-width:840px; text-align:left; padding:8px 20px;">
+          <div class="flow-step-title" style="font-size:26px;">📊 Agent Request</div>
+        </div>
+        <div class="flow-connector" style="height:20px;"></div>
+        <div style="display:flex; flex-direction:column; gap:6px; width:100%; max-width:840px;">
+          <div class="flow-step" style="padding:6px 20px; text-align:left;">
+            <div class="flow-step-desc" style="font-size:24px;">🧠 LLM Call → <span style="color:var(--accent-primary);">list_tables</span> · tokens: ~400 in, ~15 out · ~800ms</div>
+          </div>
+          <div class="flow-step flow-step-success" style="padding:6px 20px; text-align:left;">
+            <div class="flow-step-desc" style="font-size:24px;">🔧 Tool: list_tables → [&ldquo;inventory&rdquo;, &ldquo;shipments&rdquo;] · ~2ms</div>
+          </div>
+          <div class="flow-step" style="padding:6px 20px; text-align:left;">
+            <div class="flow-step-desc" style="font-size:24px;">🧠 LLM Call → <span style="color:var(--accent-primary);">get_table_schema</span> · ~900ms</div>
+          </div>
+          <div class="flow-step flow-step-success" style="padding:6px 20px; text-align:left;">
+            <div class="flow-step-desc" style="font-size:24px;">🔧 Tool: query_database → <span style="color:var(--accent-primary);">{rows: 9}</span> · ~1100ms</div>
+          </div>
+          <div class="flow-step flow-highlight" style="padding:6px 20px; text-align:left;">
+            <div class="flow-step-desc" style="font-size:24px;">🧠 Generate report · ~1500 in + ~2000 out tokens · ~4000ms</div>
+          </div>
+          <div class="flow-step flow-step-success" style="padding:6px 20px; text-align:left;">
+            <div class="flow-step-desc" style="font-size:24px;">✅ Response delivered</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="speaker-notes" hidden>[LIVE DEMO] Switch to ai.azure.com → Project → Tracing. Find the trace from the request we just sent. Walk through each span: the initial LLM call deciding to use list_tables, the tool invocation itself (note the ~2ms duration vs ~800ms for the LLM), the schema discovery, the SQL queries, and the final report generation. Point out the token counts — the final generation step is the most expensive. Show how you can click into any span to see the full input/output. Key message: you see inside the agent's brain.</aside>
+</article>

@@ -1,0 +1,20 @@
+<article class="slide" data-number="34" data-type="list" data-section="Demo">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">Telemetry Verification</h1>
+    <p class="slide-body" style="font-size:32px;">After sending <strong>4 test prompts</strong>, we verified everything was tracked:</p>
+    <ul class="slide-list">
+      <li>✅ <strong>Foundry Responses API</strong> — 5 responses logged. All requests completed successfully with unique response IDs</li>
+      <li>✅ <strong>Conversations API</strong> — 20 items tracked:
+        <ul style="list-style:none; padding-left:28px; margin-top:6px; display:flex; flex-direction:column; gap:4px;">
+          <li style="font-size:30px; padding-left:0;">• 4 user messages (our prompts)</li>
+          <li style="font-size:30px; padding-left:0;">• 5 assistant responses (the reports)</li>
+          <li style="font-size:30px; padding-left:0;">• 11 function calls + outputs (tool invocations)</li>
+        </ul>
+      </li>
+      <li>✅ <strong>Trace IDs</strong> — Unique per request. Each prompt received a unique Trace ID for drill-down</li>
+    </ul>
+    <blockquote class="slide-quote"><p><strong>Every tool call</strong> is captured — not just the final response.</p></blockquote>
+  </div>
+  <aside class="speaker-notes" hidden>We ran four different test prompts — stock shortages, inventory value, supplier performance, and active shipments — and then verified everything in Foundry's monitoring. Five responses were logged. Twenty conversation items were tracked — that includes the user messages, the assistant responses, AND every tool call the agent made. Each request got a unique Trace ID. How to inspect: go to ai.azure.com → Project → Tracing. The key insight: Foundry captures the full execution path, not just input and output.</aside>
+</article>

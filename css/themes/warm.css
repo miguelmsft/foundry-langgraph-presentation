@@ -1,0 +1,91 @@
+[data-theme="warm"] {
+  --bg-primary: #faf6f1;
+  --bg-secondary: #f0e9df;
+  --bg-card: rgba(0,0,0,0.03);
+  --border-card: rgba(0,0,0,0.08);
+  --text-primary: #2d2a26;
+  --text-secondary: rgba(45,42,38,0.65);
+  --accent-primary: #c47a2e;
+  --accent-secondary: #8b5e3c;
+  --gradient-title: linear-gradient(135deg, #c47a2e, #8b5e3c);
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+[data-theme="warm"] .slide[data-type="title-slide"] .slide-bg::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,122,46,0.08) 0%, transparent 70%);
+  top: -120px;
+  right: -100px;
+  animation: orbFloat1 8s ease-in-out infinite;
+}
+
+[data-theme="warm"] .slide[data-type="title-slide"] .slide-bg::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139,94,60,0.06) 0%, transparent 70%);
+  bottom: -80px;
+  left: -60px;
+  animation: orbFloat2 10s ease-in-out infinite;
+}
+
+[data-theme="warm"] .slide[data-type="diagram"] .slide-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(196,122,46,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196,122,46,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+[data-theme="warm"] .tool-card {
+  backdrop-filter: none;
+  border-color: rgba(0,0,0,0.08);
+}
+
+[data-theme="warm"] .flow-step,
+[data-theme="warm"] .ecosystem-item,
+[data-theme="warm"] .tier-item,
+[data-theme="warm"] .handoff-step {
+  border-color: rgba(0,0,0,0.12);
+}
+
+[data-theme="warm"] .flow-connector::after {
+  border-color: rgba(0,0,0,0.25);
+}
+
+[data-theme="warm"] .kw { color: #b35900; }
+[data-theme="warm"] .str { color: #0e6b3a; }
+[data-theme="warm"] .cmt { color: #8a8580; }
+[data-theme="warm"] .fn { color: #7c3aed; }
+[data-theme="warm"] .num { color: #0969da; }
+[data-theme="warm"] .op { color: #2d2a26; }
+[data-theme="warm"] .prop { color: #0969da; }
+[data-theme="warm"] .tag { color: #0e6b3a; }
+
+[data-theme="warm"] .code-block {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.08);
+}
+
+[data-theme="warm"] .slide-table th {
+  background: rgba(196,122,46,0.08);
+}
+
+[data-theme="warm"] .slide-table td {
+  border-color: rgba(0,0,0,0.06);
+}
+
+[data-theme="warm"] .speaker-notes-overlay {
+  background: #f0e9df;
+  color: #2d2a26;
+}

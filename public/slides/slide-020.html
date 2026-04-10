@@ -1,0 +1,29 @@
+<article class="slide" data-number="20" data-type="list" data-section="LangGraph → Foundry">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">Deployment Flow</h1>
+    <div class="two-col">
+      <div>
+        <h3 class="section-heading">One-time setup:</h3>
+        <div class="code-block" style="font-size:22px; padding:16px 20px; white-space:pre; overflow-x:auto;"><span class="cmt"># 1. Install the azd AI agent extension</span>
+azd ext install azure.ai.agents
+
+<span class="cmt"># 2. Initialize from official starter template</span>
+azd init -t Azure-Samples/azd-ai-starter-basic
+
+<span class="cmt"># 3. Import your agent definition</span>
+azd ai agent init -m src/LogisticsAgent/agent.yaml</div>
+      </div>
+      <div>
+        <h3 class="section-heading">Deploy:</h3>
+        <div class="code-block" style="font-size:22px; padding:16px 20px; white-space:pre; overflow-x:auto;"><span class="cmt"># 4. Provision + build + deploy</span>
+azd up</div>
+        <h3 class="section-heading" style="margin-top:16px;">Test &amp; Monitor:</h3>
+        <div class="code-block" style="font-size:22px; padding:16px 20px; white-space:pre; overflow-x:auto;">azd ai agent show      <span class="cmt"># Check status</span>
+azd ai agent invoke <span class="str">"Analyze..."</span>
+azd ai agent monitor   <span class="cmt"># Stream logs</span></div>
+      </div>
+    </div>
+  </div>
+  <aside class="speaker-notes" hidden>The deployment workflow has two phases. Setup is three commands: install the AI agent extension, initialize from the official starter template that includes all the Bicep infrastructure, and import your agent.yaml which wires everything together. Then azd up is the one-command deployment: it provisions all infrastructure via Bicep, builds the container remotely in ACR, pushes the image, creates the hosted agent version, and starts it. After deployment, you have three lifecycle commands: show, invoke, and monitor. For cleanup, azd down tears everything down.</aside>
+</article>

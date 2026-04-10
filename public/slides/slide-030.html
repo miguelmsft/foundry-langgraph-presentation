@@ -1,0 +1,22 @@
+<article class="slide" data-number="30" data-type="demo-placeholder" data-section="Demo">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">🖥️ LIVE DEMO — Agent in Action</h1>
+    <div class="demo-badge">🎮 LIVE DEMO</div>
+    <p class="slide-body" style="text-align:center; max-width:1100px;"><strong>Invoking the deployed agent...</strong></p>
+    <div class="code-block" style="font-size:22px; padding:18px 24px; white-space:pre; overflow-x:auto; text-align:left; max-width:1000px;">azd ai agent invoke --new-session \
+  <span class="str">"Analyze inventory and identify critical stock shortages \
+   and delayed shipments. Give me a complete logistics report."</span></div>
+    <div style="text-align:left; max-width:800px;">
+      <h3 class="section-heading" style="text-align:center;">What to watch for:</h3>
+      <ol class="slide-list" style="margin-top:8px;">
+        <li>🧠 Agent autonomously decides which tools to call</li>
+        <li>🔧 Multiple SQL queries — it figures out the right ones</li>
+        <li>📊 Structured report with all 6 sections</li>
+        <li>⏱️ Total time: ~15–20 seconds</li>
+      </ol>
+    </div>
+    <blockquote class="slide-quote" style="max-width:800px;"><p>&ldquo;The agent doesn&#x27;t just answer — it reasons about the data.&rdquo;</p></blockquote>
+  </div>
+  <aside class="speaker-notes" hidden>[LIVE DEMO] Run the azd ai agent invoke command. As the response streams in, narrate what's happening: the agent is first calling list_tables, then get_table_schema, then running multiple SQL queries. Point out that nobody told the agent what SQL to write — it decided based on the question and the schema. Highlight the structured report when it appears — the 🚨 Critical Alerts section should list 9 items, the ⚠️ Delayed Shipments should show 5 problematic shipments, and the 🏭 Supplier Scorecard should rank all 14 suppliers.</aside>
+</article>

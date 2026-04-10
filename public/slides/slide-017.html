@@ -1,0 +1,67 @@
+<article class="slide" data-number="17" data-type="boxes" data-section="LangGraph → Foundry">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">The Integration Stack</h1>
+    <div class="tool-grid tool-grid-3">
+      <div class="tool-card">
+        <div class="tool-card-icon">🧠</div>
+        <div class="tool-card-title">langgraph</div>
+        <div class="tool-card-body">
+          <ul>
+            <li>v1.1.6</li>
+            <li>Agent Framework</li>
+            <li>State graph engine</li>
+          </ul>
+        </div>
+        <div class="tool-card-footer">Orchestration</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">🔗</div>
+        <div class="tool-card-title">langchain-openai</div>
+        <div class="tool-card-body">
+          <ul>
+            <li>AzureChatOpenAI</li>
+            <li>Model connection</li>
+            <li>Token auth</li>
+          </ul>
+        </div>
+        <div class="tool-card-footer">Model Layer</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">🔧</div>
+        <div class="tool-card-title">langchain-core</div>
+        <div class="tool-card-body">
+          <ul>
+            <li>@tool decorator</li>
+            <li>Message types</li>
+            <li>Base abstractions</li>
+          </ul>
+        </div>
+        <div class="tool-card-footer">Tool Layer</div>
+      </div>
+    </div>
+    <div class="tool-grid tool-grid-2" style="margin-top:12px;">
+      <div class="tool-card" style="border-color:var(--accent-primary);">
+        <div class="tool-card-icon">🌉</div>
+        <div class="tool-card-title" style="color:var(--accent-primary);">azure-ai-agentserver-langgraph</div>
+        <div class="tool-card-body">
+          <ul>
+            <li>v1.0.0b17 — Hosting Adapter</li>
+            <li>from_langgraph() → HTTP :8088</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">🔐</div>
+        <div class="tool-card-title">azure-identity + azure-monitor</div>
+        <div class="tool-card-body">
+          <ul>
+            <li>DefaultAzureCredential</li>
+            <li>OpenTelemetry export</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="speaker-notes" hidden>This diagram shows how all the Python packages fit together. At the top is your code — the LangGraph agent, tools, and prompts. LangGraph provides the graph-based orchestration engine. langchain-openai provides the AzureChatOpenAI class. langchain-core provides the @tool decorator. The hosting adapter wraps everything into the Foundry-compatible HTTP server. At the bottom, azure-identity handles auth and azure-monitor-opentelemetry exports traces and metrics.</aside>
+</article>

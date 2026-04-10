@@ -1,0 +1,39 @@
+<article class="slide" data-number="16" data-type="code-example" data-section="Building Agents with LangGraph">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">Giving Your Agent Tools</h1>
+    <div class="code-label">tools.py (from our demo)</div>
+    <div class="code-block"><span class="kw">import</span> json, sqlite3
+<span class="kw">from</span> langchain_core.tools <span class="kw">import</span> tool
+
+ALLOWED_TABLES = {<span class="str">"inventory"</span>, <span class="str">"shipments"</span>}
+
+<span class="fn">@tool</span>
+<span class="kw">def</span> <span class="fn">query_database</span>(sql_query: <span class="num">str</span>) -> <span class="num">str</span>:
+    <span class="str">"""Execute a read-only SQL query against the logistics database.
+
+    Args:
+        sql_query: A SELECT SQL query. Only SELECT statements allowed.
+
+    Returns a JSON string with columns, rows, and row count.
+    Results truncated to 100 rows.
+    """</span>
+    normalized = sql_query.<span class="fn">strip</span>().<span class="fn">upper</span>()
+    <span class="kw">if not</span> normalized.<span class="fn">startswith</span>(<span class="str">"SELECT"</span>):
+        <span class="kw">return</span> json.<span class="fn">dumps</span>({<span class="str">"error"</span>: <span class="str">"Only SELECT queries are allowed."</span>})
+
+    dangerous = {<span class="str">"INSERT"</span>, <span class="str">"UPDATE"</span>, <span class="str">"DELETE"</span>, <span class="str">"DROP"</span>, <span class="str">"ALTER"</span>, <span class="str">"CREATE"</span>}
+    <span class="kw">if</span> <span class="fn">set</span>(normalized.<span class="fn">split</span>()) &amp; dangerous:
+        <span class="kw">return</span> json.<span class="fn">dumps</span>({<span class="str">"error"</span>: <span class="str">"Query contains disallowed keywords."</span>})
+
+    conn = sqlite3.<span class="fn">connect</span>(<span class="str">"file:data/logistics.db?mode=ro"</span>, uri=<span class="num">True</span>)
+    cursor = conn.<span class="fn">cursor</span>()
+    cursor.<span class="fn">execute</span>(sql_query)
+    columns = [d[<span class="num">0</span>] <span class="kw">for</span> d <span class="kw">in</span> cursor.description]
+    rows = [<span class="fn">list</span>(r) <span class="kw">for</span> r <span class="kw">in</span> cursor.<span class="fn">fetchall</span>()[:<span class="num">100</span>]]
+    conn.<span class="fn">close</span>()
+    <span class="kw">return</span> json.<span class="fn">dumps</span>({<span class="str">"columns"</span>: columns, <span class="str">"rows"</span>: rows})</div>
+    <p class="slide-body" style="font-size:30px; margin-top:4px;">🛡️ <strong>Safety:</strong> Read-only mode, keyword blocking, result truncation</p>
+  </div>
+  <aside class="speaker-notes" hidden>Tools are just Python functions with the @tool decorator. Three things matter: First, the docstring — the LLM reads it to decide when and how to use the tool. Second, safety — query_database uses read-only mode plus dangerous keyword blocking. Results are truncated to 100 rows. Third, return format — tools should return strings, typically JSON, so the LLM can parse the result. We have three tools total: list_tables, get_table_schema, and query_database.</aside>
+</article>

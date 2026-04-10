@@ -1,0 +1,28 @@
+<article class="slide" data-number="8" data-type="code-example" data-section="Microsoft Foundry &amp; Hosted Agents">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">agent.yaml — Your Agent&#x27;s Identity Card</h1>
+    <div class="code-block"><span class="kw">kind:</span> <span class="str">hosted</span>                              <span class="cmt"># ← MUST be at root level</span>
+<span class="kw">name:</span> <span class="str">LogisticsAgentLG</span>
+<span class="kw">description:</span> <span class="str">Manufacturing Logistics Analyst Agent powered by LangGraph.</span>
+
+<span class="kw">protocols:</span>
+  - <span class="kw">protocol:</span> <span class="str">responses</span>
+    <span class="kw">version:</span> <span class="str">v1</span>
+
+<span class="kw">environment_variables:</span>
+  - <span class="kw">name:</span> <span class="str">AZURE_OPENAI_ENDPOINT</span>
+    <span class="kw">value:</span> <span class="str">${AZURE_OPENAI_ENDPOINT}</span>       <span class="cmt"># ← Resolved from Bicep outputs</span>
+  - <span class="kw">name:</span> <span class="str">OPENAI_API_VERSION</span>
+    <span class="kw">value:</span> <span class="str">2025-03-01-preview</span>
+  - <span class="kw">name:</span> <span class="str">AZURE_AI_MODEL_DEPLOYMENT_NAME</span>
+    <span class="kw">value:</span> <span class="str">gpt-54-mini</span>
+
+<span class="kw">resources:</span>
+  - <span class="kw">kind:</span> <span class="str">model</span>
+    <span class="kw">id:</span> <span class="str">gpt-5.4-mini</span>                      <span class="cmt"># ← "I need this model deployed"</span>
+    <span class="kw">name:</span> <span class="str">chat</span></div>
+    <p class="text-sm" style="font-style:italic; margin-top:4px;">Simplified for illustration — full version includes metadata, tags, and Application Insights config</p>
+  </div>
+  <aside class="speaker-notes" hidden>This is the agent manifest — the identity card for your agent in Foundry. A few critical things to note. First: kind: hosted MUST be at the root level, NOT nested under a template: block. Older docs showed a nested format, but the current azd extension rejects it with a confusing error. Second: environment variables use ${VAR_NAME} syntax which gets resolved from Bicep outputs at deploy time. Third: the resources section tells azd what models to deploy — here we need gpt-5.4-mini.</aside>
+</article>

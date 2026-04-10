@@ -1,0 +1,25 @@
+<article class="slide" data-number="36" data-type="comparison" data-section="Closing">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">What&#x27;s Next: MCP &amp; A2A</h1>
+    <table class="slide-table">
+      <thead>
+        <tr><th></th><th>MCP (Model Context Protocol)</th><th>A2A (Agent-to-Agent)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Purpose</strong></td><td>Connect agents to <strong>tools</strong></td><td>Connect agents to <strong>agents</strong></td></tr>
+        <tr><td><strong>Status</strong></td><td>✅ GA (native MCP tool)</td><td>🔄 Preview (A2APreviewTool)</td></tr>
+        <tr><td><strong>Example</strong></td><td>GitHub MCP, Microsoft Learn MCP</td><td>Specialist agents collaborating</td></tr>
+        <tr><td><strong>Transport</strong></td><td>HTTP/HTTPS (remote)</td><td>JSON-RPC 2.0 over HTTP</td></tr>
+        <tr><td><strong>Standard</strong></td><td>Anthropic (open)</td><td>Linux Foundation (open)</td></tr>
+      </tbody>
+    </table>
+    <h3 class="section-heading">For Hosted Agents:</h3>
+    <ul class="slide-list" style="margin-top:4px;">
+      <li><strong>MCP:</strong> Use <code>langchain-mcp-adapters</code> or Foundry native <code>MCPTool</code></li>
+      <li><strong>A2A:</strong> Can be A2A <strong>client</strong> (indirect) — not A2A <strong>server</strong> natively (yet)</li>
+      <li><strong>Both:</strong> Complementary — MCP for tools, A2A for agent collaboration</li>
+    </ul>
+  </div>
+  <aside class="speaker-notes" hidden>Two protocols to be aware of. MCP — Model Context Protocol — connects agents to tool servers. It's GA in Foundry. A2A — Agent-to-Agent — is Google's open protocol for inter-agent communication, now under the Linux Foundation. It's in preview in Foundry via A2APreviewTool. For Hosted Agents, you can be an A2A client but the hosting adapter only exposes the Responses API. The key takeaway: MCP for tools, A2A for agents. They're complementary.</aside>
+</article>

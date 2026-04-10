@@ -1,0 +1,48 @@
+<article class="slide" data-number="14" data-type="diagram" data-section="Building Agents with LangGraph">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+    <h1 class="slide-title">The ReAct Pattern</h1>
+    <p class="slide-subtitle" style="font-size:28px;"><strong style="-webkit-text-fill-color:var(--accent-primary);">Think → Act → Observe → Repeat</strong></p>
+    <div style="display:flex; gap:30px; align-items:flex-start; justify-content:center;">
+      <div class="flow-container" style="flex:1; max-width:520px;">
+        <div class="flow-step" style="border-color:var(--accent-primary);">
+          <div class="flow-step-title" style="font-size:26px;">💬 User</div>
+          <div class="flow-step-desc" style="font-size:22px;">&ldquo;What parts are critically low on stock?&rdquo;</div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step">
+          <div class="flow-step-title" style="font-size:26px;">🧠 THINKS</div>
+          <div class="flow-step-desc" style="font-size:22px;">&ldquo;I need to check what tables exist&rdquo;</div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step flow-step-success">
+          <div class="flow-step-title" style="font-size:26px;">🔧 ACTS</div>
+          <div class="flow-step-desc" style="font-size:22px;">→ calls list_tables tool</div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step">
+          <div class="flow-step-title" style="font-size:26px;">👀 OBSERVES</div>
+          <div class="flow-step-desc" style="font-size:22px;">→ gets [&ldquo;inventory&rdquo;, &ldquo;shipments&rdquo;]</div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step">
+          <div class="flow-step-title" style="font-size:26px;">🧠 THINKS AGAIN</div>
+          <div class="flow-step-desc" style="font-size:22px;">&ldquo;Now I&#x27;ll check the schema...&rdquo;</div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step flow-highlight">
+          <div class="flow-step-title" style="font-size:26px;">... 5–8 iterations ...</div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step flow-step-success">
+          <div class="flow-step-title" style="font-size:26px;">📊 Final Report</div>
+        </div>
+      </div>
+      <div style="flex:0.5; padding-top:40px;">
+        <p style="font-size:26px; color:var(--text-secondary); line-height:1.6;">This is what <code style="font-size:22px;">create_react_agent()</code> builds — the dominant pattern for AI agents.</p>
+        <p style="font-size:24px; color:var(--text-secondary); line-height:1.6; margin-top:16px;"><strong style="color:var(--accent-primary);">Re</strong>asoning + <strong style="color:var(--accent-primary);">Act</strong>ing = ReAct</p>
+      </div>
+    </div>
+  </div>
+  <aside class="speaker-notes" hidden>ReAct — Reasoning + Acting — is the dominant pattern for AI agents. The LLM thinks about what to do, takes an action by calling a tool, observes the result, and then decides what to do next. This loop continues until the LLM decides it has enough information to answer. In LangGraph, create_react_agent() is a prebuilt function that constructs this exact graph. It creates two nodes — an agent node that calls the LLM and a tool node that executes tools — with a conditional edge that routes based on whether the LLM wants to use a tool or respond.</aside>
+</article>
