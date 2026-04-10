@@ -88,6 +88,7 @@ html, body {
   font-size: 68px;
   font-weight: 700;
   line-height: 1.15;
+  text-align: center;
   background: var(--gradient-title);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
